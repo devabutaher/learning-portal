@@ -45,7 +45,7 @@ const App = () => {
           ),
         },
         {
-          path: "course-player",
+          path: "course-video/:id",
           element: (
             <ProtectedRoute requireAuth>
               <CoursePlayer />

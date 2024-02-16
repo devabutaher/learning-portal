@@ -5,7 +5,7 @@ const PublicRoute = ({ children }) => {
   const user = useAuth();
 
   if (user?.role === "student") {
-    return <Navigate to="/course-player" />;
+    return <Navigate to="/course-video/1" />;
   }
 
   if (user?.role === "admin") {

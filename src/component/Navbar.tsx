@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className="shadow-md">
       <div className="max-w-7xl px-5 lg:px-0 mx-auto flex justify-between py-3">
         <Link to="/">
-          <img className="h-10" src="./assets/image/learningportal.svg" />
+          <img className="h-10" src="/assets/image/learningportal.svg" />
         </Link>
         <div className="flex items-center gap-3">
           {user?.role === "student" && (
