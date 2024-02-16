@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
     <section className="py-6 bg-primary">
@@ -10,47 +12,44 @@ const Home = () => {
           <div className="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
             <h1 className="text-slate-100 font-bold text-xl">Student Portal</h1>
             <div className="space-y-2 mt-4 flex flex-col">
-              <a className="link" href="./StudentPortal/Course Player.html">
+              <Link className="link" to="/course-player">
                 Course Player
-              </a>
-              <a className="link" href="./StudentPortal/Leaderboard.html">
+              </Link>
+              <Link to="/leaderboard" className="link">
                 Leaderboard
-              </a>
-              <a className="link" href="./StudentPortal/Quiz.html">
+              </Link>
+              <Link to="/quiz" className="link">
                 Quiz
-              </a>
-              <a className="link" href="./StudentPortal/StudentLogin.html">
+              </Link>
+              <Link to="/login" className="link">
                 StudentLogin
-              </a>
-              <a
-                className="link"
-                href="./StudentPortal/StudentReistration.html"
-              >
-                StudentReistration
-              </a>
+              </Link>
+              <Link to="/register" className="link">
+                Student Register
+              </Link>
             </div>
           </div>
           <div className="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
             <h1 className="text-slate-100 font-bold text-xl">Admin Portal</h1>
             <div className="space-y-2 mt-4 flex flex-col">
-              <a className="link" href="./Dashboard/Dashboard.html">
+              <Link to="/dashboard" className="link">
                 Dashboard
-              </a>
-              <a className="link" href="./Dashboard/AdminLogin.html">
+              </Link>
+              <Link to="/login" className="link">
                 AdminLogin
-              </a>
-              <a className="link" href="./Dashboard/Assignment.html">
+              </Link>
+              <Link to="/assignment" className="link">
                 Assignment
-              </a>
-              <a className="link" href="./Dashboard/AssignmentMark.html">
+              </Link>
+              <Link to="/assignment-mark" className="link">
                 AssignmentMark
-              </a>
-              <a className="link" href="./Dashboard/Quizzes.html">
+              </Link>
+              <Link to="/quizzes" className="link">
                 Quizzes
-              </a>
-              <a className="link" href="./Dashboard/Videos.html">
+              </Link>
+              <Link to="/videos" className="link">
                 Videos
-              </a>
+              </Link>
             </div>
           </div>
 

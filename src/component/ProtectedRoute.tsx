@@ -2,18 +2,18 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 
 const ProtectedRoute = ({ requireAuth, requireAdmin, children }) => {
-  const auth = useAuth();
+  const user = useAuth();
   const location = useLocation();
 
-  if (!auth?.user) {
+  if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  if (requireAuth && auth?.role !== "user") {
+  if (requireAuth && user?.role !== "student") {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  if (requireAdmin && auth?.role !== "admin") {
+  if (requireAdmin && user?.role !== "admin") {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

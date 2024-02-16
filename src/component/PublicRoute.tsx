@@ -2,13 +2,13 @@ import { Navigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 
 const PublicRoute = ({ children }) => {
-  const auth = useAuth();
+  const user = useAuth();
 
-  if (auth?.role === "user") {
+  if (user?.role === "student") {
     return <Navigate to="/course-player" />;
   }
 
-  if (auth?.role === "admin") {
+  if (user?.role === "admin") {
     return <Navigate to="/dashboard" />;
   }
 

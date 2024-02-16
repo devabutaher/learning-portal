@@ -1,4 +1,27 @@
+import { useState } from "react";
+import { useLoginMutation } from "../redux/features/auth/authApi";
+
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [login] = useLoginMutation();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    login(formData);
+  };
+
   return (
     <section className="py-6 bg-primary h-screen grid place-items-center">
       <div className="mx-auto max-w-md px-5 lg:px-0">
@@ -6,38 +29,43 @@ const Login = () => {
           <img
             className="h-12 mx-auto"
             src="../assets/image/learningportal.svg"
+            alt="Logo"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-100">
             Sign in to Student Account
           </h2>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label for="email-address" className="sr-only">
+              <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
               <input
                 id="email-address"
                 name="email"
                 type="email"
-                autocomplete="email"
+                autoComplete="email"
                 required
+                value={formData.email}
+                onChange={handleChange}
                 className="login-input rounded-t-md"
                 placeholder="Email address"
               />
             </div>
             <div>
-              <label for="password" className="sr-only">
+              <label htmlFor="password" className="sr-only">
                 Password
               </label>
               <input
                 id="password"
                 name="password"
                 type="password"
-                autocomplete="current-password"
+                autoComplete="current-password"
                 required
+                value={formData.password}
+                onChange={handleChange}
                 className="login-input rounded-b-md"
                 placeholder="Password"
               />

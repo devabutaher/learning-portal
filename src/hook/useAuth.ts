@@ -1,10 +1,13 @@
-const useAuth = () => {
-  const auth = {
-    user: "User",
-    role: "admin",
-  };
+import { useSelector } from "react-redux";
 
-  return auth;
+const useAuth = () => {
+  const { user } = useSelector((state) => state.auth) || {};
+
+  if (user) {
+    return user;
+  }
+
+  return null;
 };
 
 export default useAuth;
