@@ -1,8 +1,16 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { userLoggedOut } from "../redux/features/auth/authSlice";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth) || {};
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    dispatch(userLoggedOut());
+    navigate("/login");
+  };
 
   return (
     <nav className="shadow-md">
@@ -16,7 +24,10 @@ const Navbar = () => {
           )}
           <h2 className="font-bold">{user?.name}</h2>
           {user ? (
-            <button className="flex gap-2 border border-cyan items-center px-4 py-1 rounded-full text-sm transition-all hover:bg-cyan ">
+            <button
+              onClick={handleLogOut}
+              className="flex gap-2 border border-cyan items-center px-4 py-1 rounded-full text-sm transition-all hover:bg-cyan "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

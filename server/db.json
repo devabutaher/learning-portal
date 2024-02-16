@@ -48,6 +48,20 @@
       "role": "student",
       "name": "Arif",
       "id": 7
+    },
+    {
+      "email": "abutaher@gmail.com",
+      "password": "$2a$10$nNkHBGvtp6sMkqCjd/zgo.K0km8JLXhJomRQ6sw/AIAMWy62Ial4q",
+      "name": "Abu Taher",
+      "role": "student",
+      "id": 8
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$o8hWIH9LrfRi5GTUX7wWGOtaOJPbDV9PRxsmWVcb6gT6r8Mx4WwOq",
+      "name": "Admin",
+      "role": "admin",
+      "id": 9
     }
   ],
   "videos": [

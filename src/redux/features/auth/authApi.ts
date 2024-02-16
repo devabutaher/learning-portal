@@ -14,8 +14,6 @@ export const authApi = apiSlice.injectEndpoints({
         try {
           const result = await queryFulfilled;
 
-          localStorage.setItem("user", JSON.stringify(result.data.user));
-
           dispatch(userLoggedIn(result.data.user));
         } catch (err) {
           console.error(err);
@@ -33,8 +31,6 @@ export const authApi = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-
-          localStorage.setItem("user", JSON.stringify(result.data.user));
 
           dispatch(userLoggedIn(result.data.user));
         } catch (err) {

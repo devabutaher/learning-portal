@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 
 const Login = () => {
@@ -6,7 +7,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [login] = useLoginMutation();
+  const [login, { isLoading, isError, error }] = useLoginMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,11 +33,11 @@ const Login = () => {
             alt="Logo"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-100">
-            Sign in to Student Account
+            Sign in to Your Account
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-          <input type="hidden" name="remember" value="true" />
+          {isError && <p className="text-red-500">{error.data}</p>}
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email-address" className="sr-only">
@@ -74,21 +75,22 @@ const Login = () => {
 
           <div className="flex items-center justify-end">
             <div className="text-sm">
-              <a
-                href="./StudentReistration.html"
+              <Link
+                to="/register"
                 className="font-medium text-violet-600 hover:text-violet-500"
               >
                 Create New Account
-              </a>
+              </Link>
             </div>
           </div>
 
           <div>
             <button
+              disabled={isLoading}
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
             >
-              Sign in
+              {isLoading ? "Loading..." : "Sign in"}
             </button>
           </div>
         </form>
