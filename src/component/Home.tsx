@@ -1,67 +1,70 @@
 const Home = () => {
   return (
-    <section class="py-6 bg-primary">
-      <div class="mx-auto max-w-7xl px-5 lg:px-0 ">
-        <h1 class="text-4xl font-bold my-4 text-center">
+    <section className="py-6 bg-primary">
+      <div className="mx-auto max-w-7xl px-5 lg:px-0 ">
+        <h1 className="text-4xl font-bold my-4 text-center">
           You can go to other pages from here
         </h1>
 
-        <div class="grid grid-cols-2 gap-5 mt-8">
-          <div class="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
-            <h1 class="text-slate-100 font-bold text-xl">Student Portal</h1>
-            <div class="space-y-2 mt-4 flex flex-col">
-              <a class="link" href="./StudentPortal/Course Player.html">
+        <div className="grid grid-cols-2 gap-5 mt-8">
+          <div className="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
+            <h1 className="text-slate-100 font-bold text-xl">Student Portal</h1>
+            <div className="space-y-2 mt-4 flex flex-col">
+              <a className="link" href="./StudentPortal/Course Player.html">
                 Course Player
               </a>
-              <a class="link" href="./StudentPortal/Leaderboard.html">
+              <a className="link" href="./StudentPortal/Leaderboard.html">
                 Leaderboard
               </a>
-              <a class="link" href="./StudentPortal/Quiz.html">
+              <a className="link" href="./StudentPortal/Quiz.html">
                 Quiz
               </a>
-              <a class="link" href="./StudentPortal/StudentLogin.html">
+              <a className="link" href="./StudentPortal/StudentLogin.html">
                 StudentLogin
               </a>
-              <a class="link" href="./StudentPortal/StudentReistration.html">
+              <a
+                className="link"
+                href="./StudentPortal/StudentReistration.html"
+              >
                 StudentReistration
               </a>
             </div>
           </div>
-          <div class="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
-            <h1 class="text-slate-100 font-bold text-xl">Admin Portal</h1>
-            <div class="space-y-2 mt-4 flex flex-col">
-              <a class="link" href="./Dashboard/Dashboard.html">
+          <div className="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
+            <h1 className="text-slate-100 font-bold text-xl">Admin Portal</h1>
+            <div className="space-y-2 mt-4 flex flex-col">
+              <a className="link" href="./Dashboard/Dashboard.html">
                 Dashboard
               </a>
-              <a class="link" href="./Dashboard/AdminLogin.html">
+              <a className="link" href="./Dashboard/AdminLogin.html">
                 AdminLogin
               </a>
-              <a class="link" href="./Dashboard/Assignment.html">
+              <a className="link" href="./Dashboard/Assignment.html">
                 Assignment
               </a>
-              <a class="link" href="./Dashboard/AssignmentMark.html">
+              <a className="link" href="./Dashboard/AssignmentMark.html">
                 AssignmentMark
               </a>
-              <a class="link" href="./Dashboard/Quizzes.html">
+              <a className="link" href="./Dashboard/Quizzes.html">
                 Quizzes
               </a>
-              <a class="link" href="./Dashboard/Videos.html">
+              <a className="link" href="./Dashboard/Videos.html">
                 Videos
               </a>
             </div>
           </div>
 
-          <div class="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
-            <h1 class="text-slate-100 font-bold text-xl">Admin Email</h1>
-            <div class="space-y-2 mt-4 flex flex-col">
+          <div className="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
+            <h1 className="text-slate-100 font-bold text-xl">Admin Email</h1>
+            <div className="space-y-2 mt-4 flex flex-col">
               <p>Email : admin@learnwithsumit.com</p>
               <p>Password : lws@123456</p>
             </div>
           </div>
 
-          <div class="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
-            <h1 class="text-slate-100 font-bold text-xl">Student Email</h1>
-            <div class="space-y-2 mt-4 flex flex-col">
+          <div className="bg-slate-900 p-4 border border-slate-700/80 rounded-md">
+            <h1 className="text-slate-100 font-bold text-xl">Student Email</h1>
+            <div className="space-y-2 mt-4 flex flex-col">
               <p>Email : akash.ahmed@learnwithsumit.com</p>
               <p>Email : md.salahuddin@learnwithsumit.com</p>
               <p>Email : ferdous.shohag@learnwithsumit.com</p>

@@ -1,7 +1,7 @@
 const useAuth = () => {
   const auth = {
     user: "User",
-    role: "user",
+    role: "admin",
   };
 
   return auth;
