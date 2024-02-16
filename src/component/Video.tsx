@@ -1,11 +1,30 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import {
+  useGetAssignmentByStudentQuery,
+  useGetAssignmentByVideoQuery,
+} from "../redux/features/assignment/assignmentApi";
+import {
+  useGetQuizByStudentQuery,
+  useGetQuizByVideoQuery,
+} from "../redux/features/quiz/quizApi";
 import { useGetVideoQuery } from "../redux/features/videos/videosApi";
 import { formatDate } from "../utils/formateDate";
+import AssignmentModal from "./AssignmentModal";
 
 const Video = () => {
   const params = useParams();
-
+  const { user } = useSelector((state) => state.auth);
   const { data: video = {}, isLoading, isError } = useGetVideoQuery(params.id);
+  const { data: assignment = [] } = useGetAssignmentByVideoQuery(video.id);
+  const { data: quiz = [] } = useGetQuizByVideoQuery(video.id);
+  const { data: submittedAssignment = [] } = useGetAssignmentByStudentQuery(
+    user.id
+  );
+  const { data: submittedQuiz = [] } = useGetQuizByStudentQuery(user.id);
+
+  const [openModal, setOpenModal] = useState(false);
 
   const formattedDate = formatDate(video?.createdAt);
 
@@ -36,19 +55,43 @@ const Video = () => {
           </h2>
 
           <div className="flex gap-4">
-            <a
-              href="#"
-              className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
-            >
-              এসাইনমেন্ট
-            </a>
+            {assignment.length !== 0 ? (
+              submittedAssignment.length === 0 ? (
+                <button
+                  onClick={() => setOpenModal(true)}
+                  className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
+                >
+                  এসাইনমেন্ট
+                </button>
+              ) : (
+                <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                  এসাইনমেন্ট দিয়েছেন
+                </button>
+              )
+            ) : (
+              <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                এসাইনমেন্ট নেই
+              </button>
+            )}
 
-            <a
-              href="./Quiz.html"
-              className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
-            >
-              কুইজে অংশগ্রহণ করুন
-            </a>
+            {quiz.length !== 0 ? (
+              submittedQuiz.length === 0 ? (
+                <Link
+                  to="#"
+                  className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
+                >
+                  কুইজে অংশগ্রহণ করুন
+                </Link>
+              ) : (
+                <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                  কুইজে দিয়েছেন
+                </button>
+              )
+            ) : (
+              <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                কুইজ নেই
+              </button>
+            )}
           </div>
           <p className="mt-4 text-sm text-slate-400 leading-6">
             {video?.description}
@@ -58,7 +101,18 @@ const Video = () => {
     );
   }
 
-  return <>{content}</>;
+  return (
+    <div className="lg:col-span-2 col-span-4">
+      {content}
+      <AssignmentModal
+        user={user}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        video={video}
+        assignment={assignment}
+      />
+    </div>
+  );
 };
 
 export default Video;

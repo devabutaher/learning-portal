@@ -73,12 +73,21 @@
       "views": "51.2K",
       "duration": "5:30",
       "createdAt": "2023-01-15T15:17:01.727Z"
-    }, 
+    },
     {
       "id": 2,
       "title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
       "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier.",
       "url": "https://www.youtube.com/embed/E9_R88eKcBM",
+      "views": "91.2K",
+      "duration": "31:30",
+      "createdAt": "2023-02-24T17:59:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
+      "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier.",
+      "url": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
       "views": "91.2K",
       "duration": "31:30",
       "createdAt": "2023-02-24T17:59:00.000Z"
@@ -222,6 +231,18 @@
       "mark": 50,
       "repo_link": "https://github.com/Learn-with-Sumit/assignment-1",
       "status": "published"
+    },
+    {
+      "repo_link": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
+      "student_name": "Abu Taher",
+      "title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
+      "status": "pending",
+      "mark": 0,
+      "totalMark": 100,
+      "student_id": 8,
+      "assignment_id": 2,
+      "createdAt": "2024-02-16T17:36:50.338Z",
+      "id": 3
     }
   ],
   "quizMark": [
