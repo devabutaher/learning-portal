@@ -1,10 +1,16 @@
+import { Provider } from "react-redux";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import store from "./app/store";
+import CoursePlayer from "./component/CoursePlayer";
+import Dashboard from "./component/Dashboard";
+import Home from "./component/Home";
+import Login from "./component/Login";
 import Navbar from "./component/Navbar";
-import Course from "./pages/Course";
-import Home from "./pages/Home";
+import Register from "./component/Register";
+import RequireAuth from "./component/RequireAuth";
 
 const App = () => {
-  const router = createBrowserRouter([
+  const routes = [
     {
       path: "/",
       element: (
@@ -14,19 +20,36 @@ const App = () => {
         </>
       ),
       children: [
+        { path: "/", element: <Home /> },
+        { path: "login", element: <Login /> },
+        { path: "register", element: <Register /> },
         {
-          path: "/",
-          element: <Home />,
+          path: "course-player",
+          element: (
+            <RequireAuth requireAuth>
+              <CoursePlayer />
+            </RequireAuth>
+          ),
         },
         {
-          path: "/course",
-          element: <Course />,
+          path: "dashboard",
+          element: (
+            <RequireAuth requireAdmin>
+              <Dashboard />
+            </RequireAuth>
+          ),
         },
       ],
     },
-  ]);
+  ];
 
-  return <RouterProvider router={router} />;
+  const router = createBrowserRouter(routes);
+
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };
 
 export default App;
