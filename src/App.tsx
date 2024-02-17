@@ -6,7 +6,7 @@ import AssignmentMark from "./component/AssignmentMark";
 import CoursePlayer from "./component/CoursePlayer";
 import Dashboard from "./component/Dashboard";
 import Home from "./component/Home";
-import LeaderBoard from "./component/LeaderBoard";
+import Leaderboard from "./component/Leaderboard";
 import Login from "./component/Login";
 import Navbar from "./component/Navbar";
 import ProtectedRoute from "./component/ProtectedRoute";
@@ -56,7 +56,7 @@ const App = () => {
           path: "leaderboard",
           element: (
             <ProtectedRoute requireAuth>
-              <LeaderBoard />
+              <Leaderboard />
             </ProtectedRoute>
           ),
         },

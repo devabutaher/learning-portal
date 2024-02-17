@@ -10,6 +10,7 @@ export const quizApi = apiSlice.injectEndpoints({
       }),
 
       invalidatesTags: (result, error, data) => [
+        ["QuizMarks"],
         { type: "StudentQuiz", id: data.student_id },
       ],
     }),
@@ -26,6 +27,12 @@ export const quizApi = apiSlice.injectEndpoints({
         { type: "StudentQuiz", id: arg.student_id },
       ],
     }),
+
+    getQuizMarks: builder.query({
+      query: () => `/quizMark`,
+
+      providesTags: ["QuizMarks"],
+    }),
   }),
 });
 
@@ -33,4 +40,5 @@ export const {
   useAddQuizMutation,
   useGetQuizByVideoQuery,
   useGetQuizByStudentQuery,
+  useGetQuizMarksQuery,
 } = quizApi;
