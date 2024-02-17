@@ -1,13 +1,7 @@
 import { useEffect } from "react";
 import { useAddAssignmentMarkMutation } from "../redux/features/assignment/assignmentApi";
 
-const AssignmentModal = ({
-  openModal,
-  setOpenModal,
-  video,
-  assignment,
-  user,
-}) => {
+const AssignmentModal = ({ openModal, setOpenModal, assignment, user }) => {
   const [addAssignment, { isError, isLoading, isSuccess, error }] =
     useAddAssignmentMarkMutation();
 
@@ -25,7 +19,7 @@ const AssignmentModal = ({
     const data = {
       repo_link,
       student_name: user.name,
-      title: video.title,
+      title: assignment[0].title,
       status: "pending",
       mark: 0,
       totalMark: assignment[0].totalMark,

@@ -1,28 +1,19 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import {
-  useGetAssignmentByStudentQuery,
-  useGetAssignmentByVideoQuery,
-} from "../redux/features/assignment/assignmentApi";
-import {
-  useGetQuizByStudentQuery,
-  useGetQuizByVideoQuery,
-} from "../redux/features/quiz/quizApi";
+import { useParams } from "react-router-dom";
+import { useGetAssignmentByVideoQuery } from "../redux/features/assignment/assignmentApi";
+import { useGetQuizByVideoQuery } from "../redux/features/quiz/quizApi";
 import { useGetVideoQuery } from "../redux/features/videos/videosApi";
 import { formatDate } from "../utils/formateDate";
 import AssignmentModal from "./AssignmentModal";
+import AssignmentQuizButton from "./AssignmentQuizButton";
 
 const Video = () => {
-  const params = useParams();
+  const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
-  const { data: video = {}, isLoading, isError } = useGetVideoQuery(params.id);
-  const { data: assignment = [] } = useGetAssignmentByVideoQuery(video.id);
-  const { data: quiz = [] } = useGetQuizByVideoQuery(video.id);
-  const { data: submittedAssignment = [] } = useGetAssignmentByStudentQuery(
-    user.id
-  );
-  const { data: submittedQuiz = [] } = useGetQuizByStudentQuery(user.id);
+  const { data: video = {}, isLoading, isError } = useGetVideoQuery(id);
+  const { data: assignment = [] } = useGetAssignmentByVideoQuery(id);
+  const { data: quiz = [] } = useGetQuizByVideoQuery(id);
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -54,45 +45,12 @@ const Video = () => {
             Uploaded on {formattedDate}
           </h2>
 
-          <div className="flex gap-4">
-            {assignment.length !== 0 ? (
-              submittedAssignment.length === 0 ? (
-                <button
-                  onClick={() => setOpenModal(true)}
-                  className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
-                >
-                  এসাইনমেন্ট
-                </button>
-              ) : (
-                <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                  এসাইনমেন্ট দিয়েছেন
-                </button>
-              )
-            ) : (
-              <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                এসাইনমেন্ট নেই
-              </button>
-            )}
-
-            {quiz.length !== 0 ? (
-              submittedQuiz.length === 0 ? (
-                <Link
-                  to="#"
-                  className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
-                >
-                  কুইজে অংশগ্রহণ করুন
-                </Link>
-              ) : (
-                <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                  কুইজে দিয়েছেন
-                </button>
-              )
-            ) : (
-              <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                কুইজ নেই
-              </button>
-            )}
-          </div>
+          <AssignmentQuizButton
+            setOpenModal={setOpenModal}
+            assignment={assignment}
+            quiz={quiz}
+            user={user}
+          />
           <p className="mt-4 text-sm text-slate-400 leading-6">
             {video?.description}
           </p>
@@ -108,7 +66,6 @@ const Video = () => {
         user={user}
         openModal={openModal}
         setOpenModal={setOpenModal}
-        video={video}
         assignment={assignment}
       />
     </div>

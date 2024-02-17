@@ -9,26 +9,7 @@ export const assignmentApi = apiSlice.injectEndpoints({
         body: data,
       }),
 
-      async onQueryStarted(data, { queryFulfilled, dispatch }) {
-        console.log("data:", data);
-        const result = dispatch(
-          apiSlice.util.updateQueryData(
-            "getAssignmentByStudent",
-            data.student_id,
-            (draft) => {
-              console.log("draft:", JSON.stringify(draft));
-              draft.push(data);
-            }
-          )
-        );
-
-        try {
-          await queryFulfilled;
-        } catch (error) {
-          result.undo();
-          console.error(error);
-        }
-      },
+      invalidatesTags: ["GetStudentAssignment"],
     }),
 
     getAssignmentByVideo: builder.query({
@@ -36,7 +17,10 @@ export const assignmentApi = apiSlice.injectEndpoints({
     }),
 
     getAssignmentByStudent: builder.query({
-      query: (id) => `/assignmentMark?student_id=${id}`,
+      query: ({ student_id, assignment_id }) =>
+        `/assignmentMark?student_id=${student_id}&assignment_id=${assignment_id}`,
+
+      providesTags: ["GetStudentAssignment"],
     }),
   }),
 });

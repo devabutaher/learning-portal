@@ -61,7 +61,7 @@ const App = () => {
           ),
         },
         {
-          path: "quiz",
+          path: "quiz/:id",
           element: (
             <ProtectedRoute requireAuth>
               <Quiz />

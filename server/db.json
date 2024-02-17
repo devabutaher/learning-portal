@@ -82,15 +82,6 @@
       "views": "91.2K",
       "duration": "31:30",
       "createdAt": "2023-02-24T17:59:00.000Z"
-    },
-    {
-      "id": 3,
-      "title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
-      "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier.",
-      "url": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
-      "views": "91.2K",
-      "duration": "31:30",
-      "createdAt": "2023-02-24T17:59:00.000Z"
     }
   ],
   "assignments": [
@@ -105,7 +96,7 @@
       "id": 2,
       "title": "Assignment 2 - Implement Best Practices",
       "video_id": 2,
-      "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
+      "video_title": "JavaScript Tips and Tricks - JavaScript Job Interview Questions",
       "totalMark": 100
     }
   ],
@@ -235,14 +226,26 @@
     {
       "repo_link": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
       "student_name": "Abu Taher",
-      "title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
+      "title": "Assignment 2 - Implement Best Practices",
       "status": "pending",
       "mark": 0,
       "totalMark": 100,
       "student_id": 8,
       "assignment_id": 2,
-      "createdAt": "2024-02-16T17:36:50.338Z",
+      "createdAt": "2024-02-17T07:24:02.655Z",
       "id": 3
+    },
+    {
+      "repo_link": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
+      "student_name": "Abu Taher",
+      "title": "Assignment 1 - Implement Debounce Function",
+      "status": "pending",
+      "mark": 0,
+      "totalMark": 100,
+      "student_id": 8,
+      "assignment_id": 1,
+      "createdAt": "2024-02-17T07:25:42.128Z",
+      "id": 4
     }
   ],
   "quizMark": [
@@ -250,6 +253,18 @@
       "id": 1,
       "student_id": 2,
       "student_name": "Saad Hasan",
+      "video_id": 1,
+      "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
+      "totalQuiz": 2,
+      "totalCorrect": 1,
+      "totalWrong": 1,
+      "totalMark": 10,
+      "mark": 5
+    },
+    {
+      "id": 2,
+      "student_id": 8,
+      "student_name": "Abu Taher",
       "video_id": 1,
       "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
       "totalQuiz": 2,
