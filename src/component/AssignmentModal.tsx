@@ -1,20 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../hook/useAuth";
 import { useAddAssignmentMarkMutation } from "../redux/features/assignment/assignmentApi";
 
-const AssignmentModal = ({ openModal, setOpenModal, assignment, user }) => {
+const AssignmentModal = ({ openModal, setOpenModal, assignment }) => {
+  const user = useAuth();
+
   const [addAssignment, { isError, isLoading, isSuccess, error }] =
     useAddAssignmentMarkMutation();
+
+  const [repo_link, setRepo_link] = useState("");
 
   useEffect(() => {
     if (isSuccess) {
       setOpenModal(false);
+      setRepo_link("");
     }
   }, [isSuccess, setOpenModal]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const repo_link = e.target.repo.value;
 
     const data = {
       repo_link,
@@ -55,6 +59,8 @@ const AssignmentModal = ({ openModal, setOpenModal, assignment, user }) => {
                 Github Link
               </label>
               <input
+                onChange={(e) => setRepo_link(e.target.value)}
+                value={repo_link}
                 id="github-repo"
                 name="repo"
                 type="text"

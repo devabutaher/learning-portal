@@ -9,7 +9,9 @@ export const assignmentApi = apiSlice.injectEndpoints({
         body: data,
       }),
 
-      invalidatesTags: ["GetStudentAssignment"],
+      invalidatesTags: (result, error, data) => [
+        { type: "StudentAssignment", id: data.student_id },
+      ],
     }),
 
     getAssignmentByVideo: builder.query({
@@ -20,7 +22,9 @@ export const assignmentApi = apiSlice.injectEndpoints({
       query: ({ student_id, assignment_id }) =>
         `/assignmentMark?student_id=${student_id}&assignment_id=${assignment_id}`,
 
-      providesTags: ["GetStudentAssignment"],
+      providesTags: (result, error, arg) => [
+        { type: "StudentAssignment", id: arg.student_id },
+      ],
     }),
   }),
 });

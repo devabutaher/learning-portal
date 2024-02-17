@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useGetAssignmentByVideoQuery } from "../redux/features/assignment/assignmentApi";
 import { useGetQuizByVideoQuery } from "../redux/features/quiz/quizApi";
@@ -9,11 +8,10 @@ import AssignmentModal from "./AssignmentModal";
 import AssignmentQuizButton from "./AssignmentQuizButton";
 
 const Video = () => {
-  const { id } = useParams();
-  const { user } = useSelector((state) => state.auth);
-  const { data: video = {}, isLoading, isError } = useGetVideoQuery(id);
-  const { data: assignment = [] } = useGetAssignmentByVideoQuery(id);
-  const { data: quiz = [] } = useGetQuizByVideoQuery(id);
+  const params = useParams();
+  const { data: video = {}, isLoading, isError } = useGetVideoQuery(params.id);
+  const { data: assignment = [] } = useGetAssignmentByVideoQuery(params.id);
+  const { data: quiz = [] } = useGetQuizByVideoQuery(params.id);
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -49,7 +47,6 @@ const Video = () => {
             setOpenModal={setOpenModal}
             assignment={assignment}
             quiz={quiz}
-            user={user}
           />
           <p className="mt-4 text-sm text-slate-400 leading-6">
             {video?.description}
@@ -63,7 +60,6 @@ const Video = () => {
     <div className="lg:col-span-2 col-span-4">
       {content}
       <AssignmentModal
-        user={user}
         openModal={openModal}
         setOpenModal={setOpenModal}
         assignment={assignment}

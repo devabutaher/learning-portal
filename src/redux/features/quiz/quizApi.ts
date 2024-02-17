@@ -9,7 +9,9 @@ export const quizApi = apiSlice.injectEndpoints({
         body: data,
       }),
 
-      invalidatesTags: ["GetStudentQuiz"],
+      invalidatesTags: (result, error, data) => [
+        { type: "StudentQuiz", id: data.student_id },
+      ],
     }),
 
     getQuizByVideo: builder.query({
@@ -20,7 +22,9 @@ export const quizApi = apiSlice.injectEndpoints({
       query: ({ student_id, video_id }) =>
         `/quizMark?student_id=${student_id}&video_id=${video_id}`,
 
-      providesTags: ["GetStudentQuiz"],
+      providesTags: (result, error, arg) => [
+        { type: "StudentQuiz", id: arg.student_id },
+      ],
     }),
   }),
 });

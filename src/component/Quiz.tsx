@@ -1,87 +1,134 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import useAuth from "../hook/useAuth";
+import {
+  useAddQuizMutation,
+  useGetQuizByVideoQuery,
+} from "../redux/features/quiz/quizApi";
+
 const Quiz = () => {
-  return (
-    <section className="py-6 bg-primary">
+  const params = useParams();
+  const user = useAuth();
+  const {
+    data: quiz = [],
+    isError,
+    isLoading,
+  } = useGetQuizByVideoQuery(params.id);
+  const [addQuiz, { isSuccess, isLoading: addQuizLoading }] =
+    useAddQuizMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [answers, setAnswers] = useState({});
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(`/course-video/${params.id}`);
+    }
+  }, [isSuccess, navigate, params.id]);
+
+  const handleQuizOption = () => {
+    let totalCorrect = 0;
+    let totalWrong = 0;
+    let mark = 0;
+
+    quiz.forEach((question) => {
+      // Find the selected option from the question options
+      const selectedOption = question.options.find(
+        (option) => option.id === answers[question.id]
+      );
+
+      // If an option is selected and it's correct, increment total correct and mark
+      if (selectedOption && selectedOption.isCorrect) {
+        totalCorrect++;
+        mark += 5;
+      } else if (selectedOption && !selectedOption.isCorrect) {
+        // If an option is selected but it's incorrect, increment total wrong
+        totalWrong++;
+      }
+    });
+
+    // data to send to backend
+    const data = {
+      student_id: user.id,
+      student_name: user.name,
+      video_id: quiz[0]?.video_id,
+      video_title: quiz[0]?.video_title,
+      totalQuiz: quiz.length,
+      totalMark: quiz.length * 5,
+      totalCorrect,
+      totalWrong,
+      mark,
+    };
+
+    dispatch(addQuiz(data));
+  };
+
+  const handleOptionChange = (questionId, optionId) => {
+    setAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [questionId]: optionId,
+    }));
+  };
+
+  // decide what to render
+  let content;
+  if (isLoading) {
+    content = <p className="text-center">Loading...</p>;
+  } else if (!isLoading && isError) {
+    content = <p className="text-center">Cannot get quiz!</p>;
+  } else if (!isLoading && !isError && quiz?.length === 0) {
+    content = <p className="text-center">No quiz found</p>;
+  } else if (!isLoading && !isError && quiz?.length > 0) {
+    content = (
       <div className="mx-auto max-w-7xl px-5 lg:px-0">
         <div className="mb-8">
           <h1 className="text-2xl font-bold">
-            Quizzes for "Debounce Function in JavaScript - JavaScript Job
-            Interview question"
+            Quizzes for "{quiz[0].video_title}"
           </h1>
           <p className="text-sm text-slate-200">
             Each question contains 5 Mark
           </p>
         </div>
         <div className="space-y-8 ">
-          <div className="quiz">
-            <h4 className="question">
-              Quiz 1 - What is a Debounce function in JavaScript?
-            </h4>
-            <form className="quizOptions">
-              {/* <!-- Option 1 --> */}
-              <label for="option1_q1">
-                <input type="checkbox" id="option1_q1" />A function that is
-                called after a certain time interval
-              </label>
-
-              {/* <!-- Option 2 --> */}
-              <label for="option2_q1">
-                <input type="checkbox" id="option2_q1" />A function that is
-                called after a certain time interval
-              </label>
-
-              {/* <!-- Option 3 --> */}
-              <label for="option3_q1">
-                <input type="checkbox" id="option3_q1" />A function that is
-                called after a certain time interval
-              </label>
-
-              {/* <!-- Option 4 --> */}
-              <label for="option4_q1">
-                <input type="checkbox" id="option4_q1" />A function that is
-                called after a certain time interval
-              </label>
-            </form>
-          </div>
-
-          <div className="quiz">
-            <h4 className="question">
-              Quiz 2 - Which of the following is an example of a situation where
-              you would use the Debounce function?
-            </h4>
-            <form className="quizOptions">
-              {/* <!-- Option 1 --> */}
-              <label for="option1_q2">
-                <input type="checkbox" id="option1_q2" />A search bar where the
-                results are displayed as you type.
-              </label>
-
-              {/* <!-- Option 2 --> */}
-              <label for="option2_q2">
-                <input type="checkbox" id="option2_q2" />A button that performs
-                an action when clicked.
-              </label>
-
-              {/* <!-- Option 3 --> */}
-              <label for="option3_q2">
-                <input type="checkbox" id="option3_q2" />
-                An animation that plays when a user hovers over an element.
-              </label>
-
-              {/* <!-- Option 4 --> */}
-              <label for="option4_q2">
-                <input type="checkbox" id="option4_q2" />
-                All of the above.
-              </label>
-            </form>
-          </div>
+          {quiz.map((question) => (
+            <div key={question.id} className="quiz">
+              <h4 className="question">
+                Quiz {question.id} - {question.question}
+              </h4>
+              {/* <!-- Option --> */}
+              <form className="quizOptions">
+                {question.options.map((option) => (
+                  <label key={option.id}>
+                    <input
+                      type="checkbox"
+                      name={`question-${question.id}`}
+                      value={option.id}
+                      checked={answers[question.id] === option.id}
+                      onChange={() =>
+                        handleOptionChange(question.id, option.id)
+                      }
+                    />
+                    {option.option}
+                  </label>
+                ))}
+              </form>
+            </div>
+          ))}
         </div>
 
-        <button className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 ">
-          Submit
+        <button
+          onClick={handleQuizOption}
+          disabled={addQuizLoading}
+          className="px-4 py-2 rounded-full bg-cyan-600 block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
+        >
+          {addQuizLoading ? "Loading" : "Submit"}
         </button>
       </div>
-    </section>
-  );
+    );
+  }
+
+  return <section className="py-6 bg-primary">{content}</section>;
 };
 
 export default Quiz;

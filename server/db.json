@@ -226,25 +226,25 @@
     {
       "repo_link": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
       "student_name": "Abu Taher",
-      "title": "Assignment 2 - Implement Best Practices",
-      "status": "pending",
-      "mark": 0,
-      "totalMark": 100,
-      "student_id": 8,
-      "assignment_id": 2,
-      "createdAt": "2024-02-17T07:24:02.655Z",
-      "id": 3
-    },
-    {
-      "repo_link": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
-      "student_name": "Abu Taher",
       "title": "Assignment 1 - Implement Debounce Function",
       "status": "pending",
       "mark": 0,
       "totalMark": 100,
       "student_id": 8,
       "assignment_id": 1,
-      "createdAt": "2024-02-17T07:25:42.128Z",
+      "createdAt": "2024-02-17T15:05:51.087Z",
+      "id": 3
+    },
+    {
+      "repo_link": "https://www.youtube.com/embed/kBwdZ5h9vOk?si=HtViIK4HRf5PnvSf",
+      "student_name": "Abu Taher",
+      "title": "Assignment 2 - Implement Best Practices",
+      "status": "pending",
+      "mark": 0,
+      "totalMark": 100,
+      "student_id": 8,
+      "assignment_id": 2,
+      "createdAt": "2024-02-17T15:05:55.557Z",
       "id": 4
     }
   ],
@@ -262,16 +262,28 @@
       "mark": 5
     },
     {
-      "id": 2,
       "student_id": 8,
       "student_name": "Abu Taher",
       "video_id": 1,
       "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
       "totalQuiz": 2,
-      "totalCorrect": 1,
-      "totalWrong": 1,
       "totalMark": 10,
-      "mark": 5
+      "totalCorrect": 2,
+      "totalWrong": 0,
+      "mark": 10,
+      "id": 2
+    },
+    {
+      "student_id": 8,
+      "student_name": "Abu Taher",
+      "video_id": 2,
+      "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
+      "totalQuiz": 1,
+      "totalMark": 5,
+      "totalCorrect": 1,
+      "totalWrong": 0,
+      "mark": 5,
+      "id": 3
     }
   ]
 }

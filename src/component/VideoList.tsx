@@ -14,6 +14,7 @@ const VideoList = () => {
   } else if (!isLoading && !isError && videos?.length > 0) {
     content = videos.map((video) => (
       <Link
+        key={video.id}
         to={`/course-video/${video.id}`}
         className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3"
       >
