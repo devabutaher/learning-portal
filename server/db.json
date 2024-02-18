@@ -166,7 +166,7 @@
         {
           "id": 1,
           "option": "null represents the intentional absence of any object value.",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "id": 2,
@@ -181,7 +181,7 @@
         {
           "id": 4,
           "option": "No Difference",
-          "isCorrect": false
+          "isCorrect": true
         }
       ]
     }
@@ -280,9 +280,9 @@
       "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
       "totalQuiz": 1,
       "totalMark": 5,
-      "totalCorrect": 1,
+      "totalCorrect": 0,
       "totalWrong": 0,
-      "mark": 5,
+      "mark": 0,
       "id": 3
     }
   ]

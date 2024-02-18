@@ -47,9 +47,12 @@ const AssignmentQuizButton = ({ setOpenModal, assignment, quiz }) => {
             কুইজে অংশগ্রহণ করুন
           </Link>
         ) : (
-          <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-            কুইজে দিয়েছেন
-          </button>
+          <Link
+            to={`/quiz/${params.id}`}
+            className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary"
+          >
+            কুইজের উত্তর দেখুন
+          </Link>
         )
       ) : (
         <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">

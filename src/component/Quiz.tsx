@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import {
   useAddQuizMutation,
+  useGetQuizByStudentQuery,
   useGetQuizByVideoQuery,
 } from "../redux/features/quiz/quizApi";
 
@@ -17,6 +18,11 @@ const Quiz = () => {
   } = useGetQuizByVideoQuery(params.id);
   const [addQuiz, { isSuccess, isLoading: addQuizLoading }] =
     useAddQuizMutation();
+  const { data: submittedQuiz = [] } = useGetQuizByStudentQuery({
+    student_id: user.id,
+    video_id: params.id,
+  });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [answers, setAnswers] = useState({});
@@ -104,7 +110,10 @@ const Quiz = () => {
                       type="checkbox"
                       name={`question-${question.id}`}
                       value={option.id}
-                      checked={answers[question.id] === option.id}
+                      checked={
+                        answers[question.id] === option.id ||
+                        (submittedQuiz.length > 0 && option.isCorrect)
+                      }
                       onChange={() =>
                         handleOptionChange(question.id, option.id)
                       }
@@ -117,13 +126,22 @@ const Quiz = () => {
           ))}
         </div>
 
-        <button
-          onClick={handleQuizOption}
-          disabled={addQuizLoading}
-          className="px-4 py-2 rounded-full bg-cyan-600 block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
-        >
-          {addQuizLoading ? "Loading" : "Submit"}
-        </button>
+        {submittedQuiz.length > 0 ? (
+          <button
+            onClick={() => navigate(-1)}
+            className="px-4 py-2 rounded-full bg-cyan-600 block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
+          >
+            Get Back
+          </button>
+        ) : (
+          <button
+            onClick={handleQuizOption}
+            disabled={addQuizLoading}
+            className="px-4 py-2 rounded-full bg-cyan-600 block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
+          >
+            {addQuizLoading ? "Loading" : "Submit"}
+          </button>
+        )}
       </div>
     );
   }
