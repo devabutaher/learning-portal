@@ -1,10 +1,12 @@
 import { Provider } from "react-redux";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import store from "./app/store";
+import AddVideo from "./component/AddVideo";
 import Assignment from "./component/Assignment";
 import AssignmentMark from "./component/AssignmentMark";
 import CoursePlayer from "./component/CoursePlayer";
 import Dashboard from "./component/Dashboard";
+import EditVideo from "./component/EditVideo";
 import Home from "./component/Home";
 import Leaderboard from "./component/Leaderboard";
 import Login from "./component/Login";
@@ -105,6 +107,22 @@ const App = () => {
           element: (
             <ProtectedRoute requireAdmin>
               <Videos />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "add-video",
+          element: (
+            <ProtectedRoute requireAdmin>
+              <AddVideo />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "edit-video/:id",
+          element: (
+            <ProtectedRoute requireAdmin>
+              <EditVideo />
             </ProtectedRoute>
           ),
         },

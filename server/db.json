@@ -76,12 +76,30 @@
     },
     {
       "id": 2,
-      "title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
+      "title": "JavaScript Tips and Tricks - JavaScript Job Interview Questions",
       "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier.",
       "url": "https://www.youtube.com/embed/E9_R88eKcBM",
       "views": "91.2K",
       "duration": "31:30",
-      "createdAt": "2023-02-24T17:59:00.000Z"
+      "createdAt": "2024-02-18T04:25:09.532Z"
+    },
+    {
+      "title": "Quick React Practice Task | Docs Mini App | React | Framer Motion",
+      "description": "In this tutorial, we guide you through the seamless integration of ReactJS to enhance your documentation application. Whether you're a seasoned developer or just starting with React, this video provides a step-by-step walkthrough of a specific task that will elevate the functionality and user experience of your Docs App.",
+      "url": "https://www.youtube.com/embed/syHGmY75pfs?si=FucIUwFVkkxDop6V",
+      "views": "65.7K",
+      "duration": "1:05",
+      "createdAt": "2024-02-18T02:22:13.831Z",
+      "id": 3
+    },
+    {
+      "title": "সাপ্তাহিক লাইভ সেশন 5 - ব্যাচ 2",
+      "description": "পঞ্চম সাপ্তাহিক লাইভ সেশনে আমরা আলোচনা করবো মডিউল 9 এ দেয়া ভিডিও এবং এসাইনমেন্ট নিয়ে। সেই সাথে আমরা সপ্তাহ ব্যাপী আপনাদের কাছে পাওয়া কিছু সাধারণ প্রশ্নের উত্তর দিবো। এরপরে আমরা প্রশ্নোত্তর পর্বে চলে যাব এবং আপনাদের কাছ থেকে কমেন্টে প্রশ্ন নিয়ে উত্তর দেয়া হবে। লাইভ সেশনটি শুরু হবার পূর্বে । কোর্স ইন্সট্রাকটর সুমিত সাহা নিজে উপস্থিত থাকবেন।",
+      "url": "https://www.youtube.com/embed/ej2ED-K-q3Q?si=XsBSUwCjj_smX5kJ",
+      "views": "65.7K",
+      "duration": "1:05",
+      "createdAt": "2024-02-18T04:25:53.499Z",
+      "id": 4
     }
   ],
   "assignments": [
