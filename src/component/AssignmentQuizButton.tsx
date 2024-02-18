@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import { useGetAssignmentByStudentQuery } from "../redux/features/assignment/assignmentApi";
-import { useGetQuizByStudentQuery } from "../redux/features/quiz/quizApi";
+import { useGetQuizMarkByStudentQuery } from "../redux/features/quiz/quizApi";
 
 const AssignmentQuizButton = ({ setOpenModal, assignment, quiz }) => {
   const params = useParams();
@@ -12,7 +12,7 @@ const AssignmentQuizButton = ({ setOpenModal, assignment, quiz }) => {
     assignment_id: assignment[0]?.id,
   });
 
-  const { data: submittedQuiz = [] } = useGetQuizByStudentQuery({
+  const { data: submittedQuiz = [] } = useGetQuizMarkByStudentQuery({
     student_id: user.id,
     video_id: params.id,
   });

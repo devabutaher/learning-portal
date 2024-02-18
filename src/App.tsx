@@ -1,11 +1,13 @@
 import { Provider } from "react-redux";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import store from "./app/store";
+import AddQuiz from "./component/AddQuiz";
 import AddVideo from "./component/AddVideo";
 import Assignment from "./component/Assignment";
 import AssignmentMark from "./component/AssignmentMark";
 import CoursePlayer from "./component/CoursePlayer";
 import Dashboard from "./component/Dashboard";
+import EditQuiz from "./component/EditQuiz";
 import EditVideo from "./component/EditVideo";
 import Home from "./component/Home";
 import Leaderboard from "./component/Leaderboard";
@@ -99,6 +101,22 @@ const App = () => {
           element: (
             <ProtectedRoute requireAdmin>
               <Quizzes />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "add-quiz",
+          element: (
+            <ProtectedRoute requireAdmin>
+              <AddQuiz />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "edit-quiz/:id",
+          element: (
+            <ProtectedRoute requireAdmin>
+              <EditQuiz />
             </ProtectedRoute>
           ),
         },

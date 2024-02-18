@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import {
-  useAddQuizMutation,
-  useGetQuizByStudentQuery,
+  useAddQuizMarkMutation,
   useGetQuizByVideoQuery,
+  useGetQuizMarkByStudentQuery,
 } from "../redux/features/quiz/quizApi";
 
 const Quiz = () => {
@@ -16,9 +16,9 @@ const Quiz = () => {
     isError,
     isLoading,
   } = useGetQuizByVideoQuery(params.id);
-  const [addQuiz, { isSuccess, isLoading: addQuizLoading }] =
-    useAddQuizMutation();
-  const { data: submittedQuiz = [] } = useGetQuizByStudentQuery({
+  const [addQuizMark, { isSuccess, isLoading: addQuizLoading }] =
+    useAddQuizMarkMutation();
+  const { data: submittedQuiz = [] } = useGetQuizMarkByStudentQuery({
     student_id: user.id,
     video_id: params.id,
   });
@@ -67,7 +67,7 @@ const Quiz = () => {
       mark,
     };
 
-    dispatch(addQuiz(data));
+    dispatch(addQuizMark(data));
   };
 
   const handleOptionChange = (questionId, optionId) => {
