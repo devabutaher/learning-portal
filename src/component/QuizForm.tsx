@@ -127,6 +127,7 @@ const QuizForm = ({
             id="select_video"
             className="mt-1.5 w-full rounded-sm border-gray-300 text-gray-100 py-1 bg-slate-800"
             onChange={(e) => setSelected_Video(JSON.parse(e.target.value))}
+            value={JSON.stringify(selected_video)}
           >
             <option value="" hidden>
               Please select video for quiz
@@ -138,7 +139,6 @@ const QuizForm = ({
                   video_id: video.id,
                   video_title: video.title,
                 })}
-                selected={video.id === selected_video.video_id}
               >
                 {video.title}
               </option>

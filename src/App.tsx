@@ -1,12 +1,14 @@
 import { Provider } from "react-redux";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import store from "./app/store";
+import AddAssignment from "./component/AddAssignment";
 import AddQuiz from "./component/AddQuiz";
 import AddVideo from "./component/AddVideo";
 import Assignment from "./component/Assignment";
 import AssignmentMark from "./component/AssignmentMark";
 import CoursePlayer from "./component/CoursePlayer";
 import Dashboard from "./component/Dashboard";
+import EditAssignment from "./component/EditAssignment";
 import EditQuiz from "./component/EditQuiz";
 import EditVideo from "./component/EditVideo";
 import Home from "./component/Home";
@@ -85,6 +87,22 @@ const App = () => {
           element: (
             <ProtectedRoute requireAdmin>
               <Assignment />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "add-assignment",
+          element: (
+            <ProtectedRoute requireAdmin>
+              <AddAssignment />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "edit-assignment/:id",
+          element: (
+            <ProtectedRoute requireAdmin>
+              <EditAssignment />
             </ProtectedRoute>
           ),
         },
